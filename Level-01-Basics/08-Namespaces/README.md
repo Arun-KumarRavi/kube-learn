@@ -6,14 +6,23 @@
 - Separating Environments: `dev`, `staging`, `prod`.
 - Team Isolation: `team-a`, `team-b`.
 
-### 🔍 Explore Namespaces:
-```bash
-kubectl get namespaces
+### 🧪 STEP 1: Create a Namespace Declaratively
+📄 `namespace.yaml`
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-app
 ```
 
-▶ **Create a Namespace:**
+▶ **Apply it**
 ```bash
-kubectl create namespace my-app
+kubectl apply -f namespace.yaml
+```
+
+🔍 **Explore Namespaces:**
+```bash
+kubectl get namespaces
 ```
 
 ▶ **Run a Pod in a specific Namespace:**

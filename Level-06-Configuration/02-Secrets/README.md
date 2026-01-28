@@ -4,9 +4,21 @@
 
 ⚠️ **Wait!** By default, K8s Secrets are only **Base64 encoded**, NOT encrypted. Use them with care!
 
-### 🧪 STEP 1: Create a Secret (Imperative is easier)
+### 🧪 STEP 1: Create a Secret (Declarative)
+📄 `secret.yaml`
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-db-secret
+type: Opaque
+data:
+  password: UEBzcncwcmQxMjM= # Base64 encoded 'P@ssw0rd123'
+```
+
+▶ **Apply it**
 ```bash
-kubectl create secret generic my-db-secret --from-literal=password=P@ssw0rd123
+kubectl apply -f secret.yaml
 ```
 
 ### 🧪 STEP 2: Use in a Pod

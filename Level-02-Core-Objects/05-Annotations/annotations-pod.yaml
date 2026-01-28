@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotated-pod
+  annotations:
+    build-version: "v1.2.3"
+    owner: "DevOps-Team"
+    description: "This is a test pod for metadata demo"
+spec:
+  containers:
+  - name: nginx
+    image: nginx

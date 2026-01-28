@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: read-probe
+  labels:
+    app: my-app
+spec:
+  containers:
+  - name: my-app
+    image: nginx
+    readinessProbe:
+      httpGet:
+        path: /index.html
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 5

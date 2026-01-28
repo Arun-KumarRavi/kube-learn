@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-frontend
+  labels:
+    tier: frontend
+    env: prod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-backend
+  labels:
+    tier: backend
+    env: prod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
