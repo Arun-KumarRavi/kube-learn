@@ -36,16 +36,16 @@ spec:
 kubectl apply -f deployment.yaml
 ```
 
-🔍 **STEP 2: Scale it**
+🔍 **STEP 2: Scale it (Declarative)**
+Update the `replicas: 3` to `replicas: 5` in `deployment.yaml`.
 ```bash
-kubectl scale deployment nginx-deployment --replicas=5
-kubectl get pods
+kubectl apply -f deployment.yaml
 ```
 
-🧪 **STEP 3: Rolling Update**
-Change the image version to `1.16.1`.
+🧪 **STEP 3: Rolling Update (Declarative)**
+Update the image to `nginx:1.16.1` in `deployment.yaml`.
 ```bash
-kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+kubectl apply -f deployment.yaml
 kubectl rollout status deployment/nginx-deployment
 ```
 

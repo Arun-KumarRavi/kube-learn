@@ -31,9 +31,32 @@ spec:
             cpu: "100m"
 ```
 
-### 🧪 STEP 2: Create the HPA
+### 🧪 STEP 2: Create the HPA (Declarative)
+📄 `hpa.yaml`
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-scaler
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+```
+
+▶ **Apply it**
 ```bash
-kubectl autoscale deployment web-scaler --cpu-percent=50 --min=1 --max=10
+kubectl apply -f hpa.yaml
 ```
 
 🔍 **STEP 3: Observe Scaling**
